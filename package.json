@@ -1,6 +1,6 @@
 {
   "name": "thing-it-device-google-ip",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "[thing-it-node] Device Plugin to remotely control Google Home and Google Chromecast.",
   "authors": "Marc Gille",
   "license": "MIT, EPL",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "bonjour": "^3.5.0",
-    "moment": "^2.20.1",
+    "moment": "^2.22.1",
     "q": "^1.5.1"
   },
   "devDependencies": {

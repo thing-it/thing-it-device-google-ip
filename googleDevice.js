@@ -74,6 +74,7 @@ module.exports = {
 };
 
 var q = require('q');
+var moment = require('moment');
 
 /**
  *
@@ -144,15 +145,13 @@ function GoogleDevice() {
     GoogleDevice.prototype.start = function () {
         var deferred = q.defer();
 
+        this.state = {};
+
         if (this.isSimulated()) {
             this.logDebug("Starting Google Device in simulated mode.");
 
             deferred.resolve();
         } else {
-            this.adapter = new Adapter().initialize(this.configuration.host, this.configuration.port, this);
-
-            this.logDebug('Adapter initialized.');
-
             deferred.resolve();
         }
 
@@ -193,15 +192,19 @@ function GoogleDevice() {
      *
      */
     GoogleDevice.prototype.utter = function (parameters) {
-        this.lastUtteranceTimestamp
-
         if (this.isSimulated()) {
-            this.lastUtterance = parameters.utterance;
+            this.state.lastUtterance = parameters.utterance;
+            this.state.lastUtteranceTimestamp = moment().toISOString();
+
+            this.publishStateChange(this.state);
         } else {
+            console.log('HTTP Call: ', parameters);
 
+            this.state.lastUtterance = parameters.utterance;
+            this.state.lastUtteranceTimestamp = moment().toISOString();
+
+            this.publishStateChange(this.state);
         }
-
-        this.lastUtteranceTimestamp = moment().toISOString();
     };
 }
 

@@ -3,9 +3,9 @@ module.exports = {
     id: "googleHomeChromecast",
     autoDiscoveryDeviceTypes: [],
     devices: [{
-        label: "Gateway",
-        id: "gateway",
-        plugin: "enocean-ip/gateway",
+        label: "Google Home Mini",
+        id: "googleHomeMini",
+        plugin: "google-ip/googleDevice",
         configuration: {
             host: "192.168.5.100"/*"127.0.0.1"*/,
             port: 8080/*3335*/,

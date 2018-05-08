@@ -1,6 +1,6 @@
 var assert = require("assert");
 
-describe('[thing-it] EnOcean IP Plugin', function () {
+describe('[thing-it] Google IP Plugin', function () {
     var testDriver;
 
     before(function () {
@@ -27,13 +27,13 @@ describe('[thing-it] EnOcean IP Plugin', function () {
         it('should receive state change messages', function (done) {
             testDriver.addListener({
                 publishDeviceStateChange: function (deviceId, actorId, state) {
-                    // if (sensorId === 'occupancySensor1') {
-                    //     done();
-                    // }
+                    console.log(deviceId, state);
+
+                    done();
                 }
             });
 
-            // testDriver.devices[0].findActor('outlet1').toggle();
+            testDriver.devices[0].utter({utterance: 'Roll Tide', language: 'Alabamish'});
         });
     });
 });
