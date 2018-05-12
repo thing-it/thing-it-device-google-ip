@@ -2,5 +2,5 @@
     {{component._state.lastUtterance}} ({{component._state.lastUtteranceTimestamp | moment:'LLL'}})
 </div>
 <div>
-    <textarea ng-model="component.___buffer" ng-blur="panel.callDeviceService(component, 'utter', {utternance: component.___buffer})"></textarea>
+    <textarea ng-model="component.___buffer" ng-blur="panel.callDeviceService(component, 'utter', {utterance: component.___buffer})"></textarea>
 </div>

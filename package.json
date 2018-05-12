@@ -17,10 +17,12 @@
   },
   "dependencies": {
     "bonjour": "^3.5.0",
+    "google-home-notifier": "^1.2.0",
     "moment": "^2.22.1",
     "q": "^1.5.1"
   },
   "devDependencies": {
+    "mocha": "^5.1.1",
     "thing-it-test": "0.0.21"
   }
 }

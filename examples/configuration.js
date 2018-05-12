@@ -7,9 +7,9 @@ module.exports = {
         id: "googleHomeMini",
         plugin: "google-ip/googleDevice",
         configuration: {
-            host: "192.168.5.100"/*"127.0.0.1"*/,
-            port: 8080/*3335*/,
-            defaultLanguage: 'en'
+            ipAddress: "192.168.1.76",
+            deviceName: "Google Home",
+            defaultLanguage: "de"
         },
         actors: [],
         sensors: [],

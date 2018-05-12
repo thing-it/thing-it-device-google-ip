@@ -42,26 +42,21 @@ module.exports = {
                 type: {
                     id: "string"
                 },
-                defaultValue: "192.168.192.1"
+                defaultValue: "192.168.1.76"
             }, {
-                label: "Port",
-                id: "port",
-                type: {
-                    id: "integer"
-                },
-                defaultValue: 55555
-            }, {
-                label: "Gateway ID",
-                id: "gatewayId",
+                label: "Device Name",
+                id: "deviceName",
                 type: {
                     id: "string"
-                }
+                },
+                defaultValue: "Google Home"
             }, {
                 label: "Default Language",
                 id: "defaultLanguage",
                 type: {
                     id: "string"
-                }
+                },
+                defaultValue: "de"
             }
         ]
     },
@@ -75,6 +70,7 @@ module.exports = {
 
 var q = require('q');
 var moment = require('moment');
+var googlehome = require('google-home-notifier');
 
 /**
  *
@@ -111,6 +107,7 @@ function GoogleDeviceDiscovery() {
         var ipaddresses = [];
         var bonjour = require('bonjour')();
 
+        // TODO: To be tested/implemented
         bonjour.find({
             type: serviceType
         }, function (service) {
@@ -152,6 +149,9 @@ function GoogleDevice() {
 
             deferred.resolve();
         } else {
+            googlehome.device(this.configuration.deviceName, this.configuration.defaultLanguage);
+            // googlehome.ip(this.configuration.ipAddress, this.configuration.defaultLanguage);
+
             deferred.resolve();
         }
 
@@ -198,7 +198,9 @@ function GoogleDevice() {
 
             this.publishStateChange(this.state);
         } else {
-            console.log('HTTP Call: ', parameters);
+            googlehome.notify(parameters.utterance, function(res) {
+                console.log(res);
+            });
 
             this.state.lastUtterance = parameters.utterance;
             this.state.lastUtteranceTimestamp = moment().toISOString();
