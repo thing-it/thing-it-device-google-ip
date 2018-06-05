@@ -149,8 +149,16 @@ function GoogleDevice() {
 
             deferred.resolve();
         } else {
-            googlehome.device(this.configuration.deviceName, this.configuration.defaultLanguage);
-            // googlehome.ip(this.configuration.ipAddress, this.configuration.defaultLanguage);
+            // Try to connect to device via device name first ...
+            if (this.configuration.deviceName) {
+                console.log(`Attempting connection to [${this.plugin}] using device name [${this.configuration.deviceName}]`);
+                googlehome.device(this.configuration.deviceName, this.configuration.defaultLanguage);
+            }
+            else {
+                // ... else try IP address
+                console.log(`Attempting connection to [${this.plugin}] using IP address [${this.configuration.ipAddress}]`);
+                googlehome.ip(this.configuration.ipAddress, this.configuration.defaultLanguage);
+            }
 
             deferred.resolve();
         }
