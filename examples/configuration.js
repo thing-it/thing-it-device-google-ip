@@ -9,7 +9,7 @@ module.exports = {
         configuration: {
             ipAddress: "192.168.1.76",
             deviceName: "Google Home",
-            defaultLanguage: "de"
+            defaultLanguage: "en"
         },
         actors: [],
         sensors: [],

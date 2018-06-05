@@ -33,7 +33,7 @@ describe('[thing-it] Google IP Plugin', function () {
                 }
             });
 
-            testDriver.devices[0].utter({utterance: 'Oma, bist du in Ordnung?', language: 'de'});
+            testDriver.devices[0].utter({utterance: 'Grandma, how are you doing?', language: 'en'});
         });
     });
 });
