@@ -1,5 +1,5 @@
 {
-  "name": "thing-it-device-google-ip",
+  "name": "@thing-it/device-google-ip",
   "version": "0.0.3",
   "description": "[thing-it-node] Device Plugin to remotely control Google Home and Google Chromecast.",
   "authors": "Marc Gille",
@@ -14,6 +14,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/thing-it/thing-it-device-google-ip"
+  },
+  "scripts": {
+    "postversion": "git push && git push --tags && npm publish"
   },
   "dependencies": {
     "bonjour": "^3.5.0",
