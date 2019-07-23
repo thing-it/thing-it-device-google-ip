@@ -142,10 +142,22 @@ function GoogleDevice() {
     GoogleDevice.prototype.start = function () {
         var deferred = q.defer();
 
+        this.operationalState = {
+            status: 'PENDING',
+            message: 'Waiting for initialization...'
+        };
+        this.publishOperationalStateChange();
+
         this.state = {};
 
         if (this.isSimulated()) {
             this.logDebug("Starting Google Device in simulated mode.");
+
+            this.operationalState = {
+                status: 'OK',
+                message: 'Google Home or Chromecast successfully initialized'
+            }
+            this.publishOperationalStateChange();
 
             deferred.resolve();
         } else {
@@ -160,6 +172,12 @@ function GoogleDevice() {
                 googlehome.ip(this.configuration.ipAddress, this.configuration.defaultLanguage);
             }
 
+            this.operationalState = {
+                status: 'OK',
+                message: 'Google Home or Chromecast successfully initialized'
+            }
+            this.publishOperationalStateChange();
+            
             deferred.resolve();
         }
 
